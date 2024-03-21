@@ -67,7 +67,7 @@
                     "name": "keyword.operator.comparison.nifty"
                 },
                 {
-                    "match": "(@?[+*/%-]=)",
+                    "match": "(@?[+\\*\\/%\\-<]=)",
                     "name": "keyword.operator.assignment.arithmetic.nifty"
                 },
                 {
@@ -75,7 +75,7 @@
                     "name": "keyword.operator.assignment.nifty"
                 },
                 {
-                    "match": "(@?(\\-\\-|\\+\\+))",
+                    "match": "(@?(\\-\\-|\\+\\+|<<))",
                     "name": "keyword.operator.increment-decrement.nifty"
                 },
                 {
@@ -95,8 +95,8 @@
                     "name": "keyword.operator.bitwise.nifty"
                 },
                 {
-                    "match": "\\b(package|api)\\b",
-                    "name": "keyword.other.package.nifty"
+                    "match": "(\\#\\#)",
+                    "name": "keyword.operator.concat.nifty"
                 },
                 {
                     "match": "\\b(use|using|as|extern)\\b",
@@ -107,11 +107,11 @@
                     "match": "\\b(behavior|does)\\b"
                 },
                 {
-                    "name": "storage.type",
+                    "name": "keyword.structure.nifty",
                     "match": "\\b(struct|enum)\\b"
                 },
                 {
-                    "match": "\\b(bool|b8|b16|b32|b64|char|string|cstring|int|uint|uintptr|float|double|s8|s16|s32|s64|s128|u8|u16|u32|u64|u128|f16|f32|f64|f128|void|typeid|rawptr)\\b",
+                    "match": "\\b(bool|b8|b16|b32|b64|char|string|cstring|int|uint|uintptr|float|double|s8|s16|s32|s64|s128|u8|u16|u32|u64|u128|f16|f32|f64|f128|void|typeid|__anytype|rawptr)\\b",
                     "name": "storage.type.primitive.nifty"
                 },
                 {
@@ -125,6 +125,10 @@
                 {
                     "name":"entity.name.type.Self.nifty",
                     "match": "\\b(Self)\\b"
+                },
+                {
+                    "name": "keyword.default.nifty",
+                    "match": "\\b(test|skip)\\b"
                 }
             ]
 		},
@@ -134,7 +138,7 @@
 					"match": "\\b(let|val|const)\\s+([A-Za-z_][A-Za-z0-9_]*)\\b",
 					"captures": {
 						"1": {
-							"name": "storage.type.nifty"
+							"name": "keyword.default.nifty"
 						},
 						"2": {
 							"name": "support.variable.nifty"
@@ -145,7 +149,7 @@
                     "match": "\\b(fn|md)\\s+(([A-Za-z_][A-Za-z0-9_]*(::))?[A-Za-z_][A-Za-z0-9_]*)\\??\\s*[\\(<\\[]",
 					"captures": {
 						"1": {
-							"name":"keyword.type.function.nifty"
+							"name":"keyword.default.nifty"
 						},
 						"2": {
 							"name":"entity.name.function.nifty"
@@ -162,13 +166,13 @@
                     "match": "\\b(fn|md)\\s+([A-Za-z_][A-Za-z0-9_]*)\\??\\s+(overloads)\\s*{",
 					"captures": {
 						"1": {
-							"name":"keyword.type.function.nifty"
+							"name":"keyword.default.nifty"
 						},
 						"2": {
 							"name":"entity.name.function.nifty"
 						},
                         "3": {
-                            "name":"keyword.type.overload.nifty"
+                            "name":"keyword.default.nifty"
                         }
 					}
 				},
@@ -176,7 +180,7 @@
 					"match": "\\b(type)\\s+([A-Za-z_][A-Za-z0-9_]*)(?:\\s*(as)\\s*([A-Za-z_][A-Za-z0-9_]*))?\\b",
 					"captures": {
 						"1": {
-							"name": "storage.type.type.nifty"
+							"name": "keyword.default.nifty"
 						},
 						"2": {
 							"name": "entity.name.type.type.nifty"
@@ -188,7 +192,18 @@
 							"name": "entity.name.type.type.nifty"
 						}
 					}
-				}
+				},
+                {
+                    "match": "\\b(package|api)\\s+([A-Za-z_][A-Za-z0-9_]*)(?:\\s*(as)\\s*([A-Za-z_][A-Za-z0-9_]*))?\\b",
+                    "captures": {
+                        "1": {
+                            "name": "keyword.default.nifty"
+                        },
+                        "2": {
+                            "name": "keyword.other.package.nifty"
+                        }
+                    }
+                }
 			]
 		},
         "callables": {
