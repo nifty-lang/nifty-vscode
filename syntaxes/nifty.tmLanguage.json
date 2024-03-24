@@ -200,7 +200,7 @@
                             "name": "keyword.default.nifty"
                         },
                         "2": {
-                            "name": "keyword.other.package.nifty"
+                            "name": "entity.name.type.module.nifty"
                         }
                     }
                 }
